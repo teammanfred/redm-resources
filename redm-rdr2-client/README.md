@@ -7,9 +7,9 @@
 
 ## Install Red Dead Redemption 2
 
-You are going to need the **full version** of *Red Dead Redemption 2*. Buying and installing *Red Dead Online* is **not** going to work.
+You may need the **full version** of *Red Dead Redemption 2*. Buying and installing *Red Dead Online* **may not** work. Players have reported different outcomes, it's probably safest to buy the full game.
 
-Make sure the game start and works before proceeding. When launching *RedM* you will always need to have the *Rockstar Games Launcher* running, probably because it handles Digital Rights Management nonsense.
+Make sure the game starts and works before proceeding. When launching *RedM* you will always need to have the *Rockstar Games Launcher* running, probably because it handles Digital Rights Management nonsense.
 
 ## Install RedM
 
@@ -78,7 +78,9 @@ When the server is unlisted you will have to enter the IPv4 address of the serve
 Resetting cache directories may ‘solve’ a lot of server connection issues.
 
 1. Quit RedM entirely
-2. Right-click the RedM Shortcut and choose ‘Open file location’
-3. Open `RedM Application Data` -> `data`
-4. Delete the `cache` and `server-cache` folders
-5. Start RedM
+2. Quit Rockstar Games Launcher entirely
+3. Right-click the RedM Shortcut and choose ‘Open file location’
+4. Open `RedM Application Data` -> `data`
+5. Delete the `cache` and `server-cache` folders
+6. Start the Rockstar Games Launcher
+7. Start RedM
