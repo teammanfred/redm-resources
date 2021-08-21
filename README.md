@@ -4,7 +4,7 @@
 
 ## RedM – Red Dead Redemption 2
 
-1. If you are looking to ‘play the game’, see: `redm-rdr2-client/README.md`.
+1. If you are looking to ‘play the game’, see: [redm-rdr2-client/README.md](redm-rdr2-client/README.md)
 ## Copyright
 
 Code is licensed under the ‘MIT License’, see LICENSE. Documentation and text that is not in a source code file is licensed under the ‘Creative Commons Zero v1.0 Universal’ license, see LICENSE-TEXT.
