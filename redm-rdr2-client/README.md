@@ -51,7 +51,7 @@ After switching to the canary update channel you will have to download a few mor
 
 ## Select a server and play
 
-> Note that a lot of servers require you to apply for an account. The server description will probably explain this.
+> A lot of servers will require whitelisting, their description will probably explain how to apply for access.
 
 ### Connect to an advertised server
 
