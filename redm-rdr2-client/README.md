@@ -70,3 +70,15 @@ When the server is unlisted you will have to enter the IPv4 address of the serve
 4. Click connect
 
 > Connecting to an unlisted server may be a bit rough. It's probably easier configure the server to advertise itself to Cfx.re and turn on whitelisting.
+
+## Troubleshooting
+
+### Remove cache directories
+
+Resetting cache directories may ‘solve’ a lot of server connection issues.
+
+1. Quit RedM entirely
+2. Right-click the RedM Shortcut and choose ‘Open file location’
+3. Open `RedM Application Data` -> `data`
+4. Delete the `cache` and `server-cache` folders
+5. Start RedM
