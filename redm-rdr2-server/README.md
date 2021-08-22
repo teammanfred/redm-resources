@@ -40,6 +40,10 @@ The output of the command can be a bit noisy, don't worry unless it spews actual
 
 ### Infinite loading screen
 
-1. Try turning adding or revoving `ensure sessionmanager-rdr3` from `server.cfg`.
-2. Remove session manage data: `rm -Rf redm/server-data/files/sessionmanager*`
-3. Make sure players remove their cache folders after changing this setting.
+Infinite loading screens are likely resource scripts crashing on either the server or client during load. Sometimes they don't show up in logs so they can be hard to debug.
+
+Note that resource loading order may be relevant. Make sure you have the lines with `ensure` in the same order as the examples.
+
+When you run into problems you can reduce the resources to a bare minimum and load them after the server started.
+
+On the client you can open the console with F8. The console may contain hints about what is going wrong.
