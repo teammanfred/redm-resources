@@ -36,6 +36,45 @@ Git is a *distributed version control system*. You will have to install it to ge
 
 The output of the command can be a bit noisy, don't worry unless it spews actual errors.
 
+## Using the setup script
+
+Find a nice directory on your machine to keep the server data, for example:
+
+    cd ~
+    mkdir -p redm && cd redm
+    mv ~/Downloads/setup .
+    chmod +x setup
+    ./setup
+
+You can run the script multiple times and it will try to be smart about not doing the same thing multiple times.
+
+After this you should be able to run the server:
+
+    ./redm
+
+Or you can run the provided run script directly:
+
+    ./run.sh +set gamename rdr3 +set config server.cfg
+
+## Using the Dockerfile
+
+Change `server.cfg` to fit your needs. You can change `redm` to anything else if you want to create different images.
+
+    docker build -t redm .
+
+Then you can create and start a new container like this:
+
+    docker run -i -t --rm -p 30120:30120 -p 40120:40120 redm ./redm
+
+Please wait until `yarn` finishes compiling all the module assets. Then reboot the server through the web interface on port `40120`
+
+For more control you can start a container and atach it to your console to start the server yourself:
+
+    docker run -a stdin -a stdout -i -t --rm -p 30120:30120 -p 40120:40120 redm
+    ./run.sh +set gamename rdr3 +set config server.cfg
+
+Note that this will wipe all server data every time you start it, if you want to persist data it's probably best to learn about Docker volumes.
+
 ## Troubleshooting
 
 ### Infinite loading screen
@@ -47,3 +86,8 @@ Note that resource loading order may be relevant. Make sure you have the lines w
 When you run into problems you can reduce the resources to a bare minimum and load them after the server started.
 
 On the client you can open the console with F8. The console may contain hints about what is going wrong.
+
+
+### qemu: uncaught target signal 6 (Aborted) - core dumped
+
+You are probably attempting to run the server on an M1 mac, that won't work due to an upstream problem in `qemu`.
