@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+RELEASE_INDEX="http://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/"
+DATA_REPOSITORY="https://github.com/citizenfx/cfx-server-data"
+SERVER_DIR="alpine"
+DATA_DIR="data"
+SCRIPT_PATH="redm"
+
+RELEASE_PATH=$(curl --silent $RELEASE_INDEX | xmllint --html --xpath "string(//nav/div/a[1]/@href)" - 2>/dev/null | sed 's/^..//g')
+RELEASE_URL="$RELEASE_INDEX$RELEASE_PATH"
+RELEASE_BASENAME=$(basename $RELEASE_PATH)
+
+if [ -f $RELEASE_BASENAME ]; then
+  echo "[skip] Release was already downloaded…"
+else
+  curl -o $RELEASE_BASENAME $RELEASE_URL
+fi
+
+if [ -d $SERVER_DIR ]; then
+  echo "[skip] Server was already unpacked…"
+else
+  tar -xvf $RELEASE_BASENAME
+fi
+chmod +x run.sh
+
+if [ -d $DATA_DIR ]; then
+  cd $DATA_DIR
+  echo "Data directory was already cloned, updating…"
+  git add .
+  git stash || true
+  git pull --ff-only
+  git stash pop || true
+  cd ..
+else
+  echo "Cloning data directory…"
+  git clone $DATA_REPOSITORY $DATA_DIR
+fi
+
+rm -f $SCRIPT_PATH
+touch $SCRIPT_PATH
+chmod +x $SCRIPT_PATH
+echo "#!/bin/bash" >> $SCRIPT_PATH
+echo "set -euxo pipefail" >> $SCRIPT_PATH
+echo "exec ./run.sh +set gamename rdr3 +set config server.cfg" >> $SCRIPT_PATH
