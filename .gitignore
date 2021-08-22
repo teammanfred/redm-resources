@@ -39,3 +39,8 @@ luac.out
 *.x86_64
 *.hex
 
+redm-rdr2-server/alpine
+redm-rdr2-server/data
+redm-rdr2-server/fx.tar.xz
+redm-rdr2-server/redm
+redm-rdr2-server/run.sh
